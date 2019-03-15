@@ -1,6 +1,8 @@
 #include <glib.h>
 #include <unistd.h>
 
+#include "wrapper.h"
+
 int wrapper(int argc, char *argv[])
 {
     int i = 0;

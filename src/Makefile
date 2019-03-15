@@ -12,8 +12,8 @@ _CFLAGS=$(CFLAGS) -I. $(shell pkg-config --cflags glib-2.0) -fPIC -Wall -std=c99
 
 CC=gcc
 
-OBJECTS=wrapper.o
-BINARIES=std_redirect
+OBJECTS=wrapper.o field.o
+BINARIES=std_redirect field_prepend field_remove
 
 all: $(OBJECTS) $(BINARIES)
 
@@ -23,7 +23,16 @@ clean:
 wrapper.o: wrapper.c wrapper.h
 	$(CC) -c $(_CFLAGS) -o $@ $<
 
+field.o: field.c field.h
+	$(CC) -c $(_CFLAGS) -o $@ $<
+
 std_redirect: std_redirect.c $(OBJECTS)
+	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+
+field_prepend: field_prepend.c $(OBJECTS)
+	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+
+field_remove: field_remove.c $(OBJECTS)
 	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
 
 install:

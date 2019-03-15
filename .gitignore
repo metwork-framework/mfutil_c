@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+/src/field_prepend
+/src/field_remove
+/src/std_redirect
