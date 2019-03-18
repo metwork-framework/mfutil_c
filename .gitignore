@@ -51,6 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-/src/field_prepend
-/src/field_remove
+/src/_field_prepend
+/src/_field_remove
 /src/std_redirect
