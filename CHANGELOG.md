@@ -1,12 +1,21 @@
-<a name="unreleased"></a>
-## [Unreleased]
+# CHANGELOG
 
-<a name="v0.0.2"></a>
-## [v0.0.2] - 2019-03-18
 
-<a name="v0.0.1"></a>
-## [v0.0.1] - 2019-03-15
-### Feat
-- add field utilities
+
+## v0.0.2 (2019-03-18)
+
+- No interesting change
+
+
+## v0.0.1 (2019-03-15)
+
+### New Features
 - first utility
+- add field utilities
+- add field utilities
+
+
+
+
+
 
