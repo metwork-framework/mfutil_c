@@ -1,0 +1,11 @@
+prefix={{PREFIX}}
+exec_prefix={{PREFIX}}
+libdir={{PREFIX}}/lib
+includedir={{PREFIX}}/include
+
+Name: mfutil
+Description: utility lib
+Version: 0.1.0
+Requires: glib-2.0 gobject-2.0 gthread-2.0
+Libs: -L${libdir} -lmfutil -L{{PREFIX}}/lib
+Cflags: -I${includedir} -I{{PREFIX}}/include
