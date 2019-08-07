@@ -4,10 +4,16 @@ ifeq ($(DEBUG),yes)
 else
 	DEBUG_CFLAGS=-O2 -Os
 endif
+FORCE_RPATH=
+ifeq ($(FORCE_RPATH),)
+	FORCE_RPATH_STR=
+else
+	FORCE_RPATH_STR=-Wl,-rpath=$(FORCE_RPATH)
+endif
 PREFIX=/usr/local
 CFLAGS+=-D_XOPEN_SOURCE=700
 
-_LDFLAGS=$(LDFLAGS) -L. $(shell pkg-config --libs glib-2.0)
+_LDFLAGS=$(LDFLAGS) -L. $(shell pkg-config --libs glib-2.0) $(FORCE_RPATH_STR)
 _CFLAGS=$(CFLAGS) -I. $(shell pkg-config --cflags glib-2.0) -fPIC -Wall -std=c99 -Wextra -pedantic -Werror -Wshadow -Wstrict-overflow -fno-strict-aliasing -DG_LOG_DOMAIN=\"mfutil_c\" $(DEBUG_CFLAGS)
 
 CC=gcc
