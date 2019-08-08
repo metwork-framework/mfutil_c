@@ -2,6 +2,17 @@
 
 
 
+## v0.0.4 (2019-08-07)
+
+### New Features
+- add RPATH support
+- add RPATH support
+
+
+
+
+
+
 ## v0.0.3 (2019-08-05)
 
 ### New Features
