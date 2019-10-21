@@ -59,11 +59,20 @@ void mfutil_echo_clean()
 
 void mfutil_echo_something(const gchar *code, const gchar *before, const gchar *after, const gchar *message, const gchar *line_end)
 {
-    printf("%s%i%s", "\033[", MFUTIL_COLUMN_OK, "G");
-    if ((message == NULL) || (strlen(message) == 0)) {
-        printf("[ %s%s%s ]%s", before, code, after, line_end);
+    gboolean interactive = mfutil_is_interactive_execution();
+    if (interactive) {
+        printf("%s%i%s", "\033[", MFUTIL_COLUMN_OK, "G");
+        if ((message == NULL) || (strlen(message) == 0)) {
+            printf("[ %s%s%s ]%s", before, code, after, line_end);
+        } else {
+            printf("[ %s%s%s ] %s%s", before, code, after, message, line_end);
+        }
     } else {
-        printf("[ %s%s%s ] %s%s", before, code, after, message, line_end);
+        if ((message == NULL) || (strlen(message) == 0)) {
+            printf("[ %s%s%s ]%s", before, code, after, line_end);
+        } else {
+            printf("[ %s%s%s ] %s%s", before, code, after, message, line_end);
+        }
     }
 }
 
@@ -114,7 +123,12 @@ void mfutil_echo_warning(const gchar *message)
  */
 void mfutil_echo_bold(const gchar *message)
 {
-    printf("\033[1m%s\033[0m\n", message);
+    gboolean interactive = mfutil_is_interactive_execution();
+    if (interactive) {
+        printf("\033[1m%s\033[0m\n", message);
+    } else {
+        printf("%s\n", message);
+    }
 }
 
 /**
