@@ -2,6 +2,19 @@
 
 
 
+## v0.0.5 (2019-10-21)
+
+### New Features
+
+
+### Bug Fixes
+- improve output in case of non-interactive context
+- improve output in case of non-interactive context
+
+
+
+
+
 ## v0.0.4 (2019-08-07)
 
 ### New Features
