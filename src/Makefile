@@ -88,6 +88,6 @@ test: all
 	./test_std_redirect.sh
 
 leak: all
-	$(VALGRIND) ./std_redirect && echo "OK"
+	$(VALGRIND) ./std_redirect --stdout=test.log -- date && echo "OK"
 
 coverage: all
