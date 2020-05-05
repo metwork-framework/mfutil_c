@@ -20,6 +20,5 @@ coverage:
 release: clean
 	mkdir -p release/lib
 	cd src && $(MAKE) PREFIX=$(shell pwd)/release FORCE_RPATH='@ORIGIN/../lib' install
-	#rm -f release/bin/test_log_proxy
 	ldd release/lib/libmfutil.so
 	cp -f `ldd release/lib/libmfutil.so |grep libglib |awk -F '=> ' '{print $$2;}' |awk '{print $$1;}'` `ldd release/lib/libmfutil.so |grep libpcre |awk -F '=> ' '{print $$2;}' |awk '{print $$1;}'` release/lib/
