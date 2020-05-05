@@ -22,8 +22,10 @@ jobs:
         name: checkout repository
       - name: update dockerfile
         run: |
+          ls -l docker
           cat docker/Dockerfile | set -e "s/{{centos-version}}/${{ matrix.centos-version }}/" > dockerfile.t
           mv dockerfile.t docker/Dockerfile
+          cat docker/Dockerfile
       - name: make docker buildimage
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
