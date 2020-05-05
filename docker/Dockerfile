@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos:{{centos-version}}
 MAINTAINER Fabien MARTY <fabien.marty@gmail.com>
 
 RUN yum -y install gcc make valgrind glib2-devel
