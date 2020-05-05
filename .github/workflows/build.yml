@@ -45,7 +45,12 @@ jobs:
       - name: debug env
         run: env |grep GITHUB
       - name: build
-        uses: docker://metwork/mfutilc-${{ matrix.centos-version }}-buildimage
+        if: ${{ matrix.centos-version }} == 'centos6'
+        uses: docker://metwork/mfutilc-centos6-buildimage
+        if: ${{ matrix.centos-version }} == 'centos7'
+        uses: docker://metwork/mfutilc-centos7-buildimage
+        if: ${{ matrix.centos-version }} == 'centos8'
+        uses: docker://metwork/mfutilc-centos8-buildimage
       - name: compute tag name
         id: vars
         run: |
@@ -57,6 +62,7 @@ jobs:
           tar -cvf mfutil_c-linux64-${{ steps.vars.outputs.tag }}.tar mfutil_c-linux64-${{ steps.vars.outputs.tag }}
           gzip mfutil_c-linux64-${{ steps.vars.outputs.tag }}.tar
       - name: upload artifact
+        if: ${{ matrix.centos-version }} == 'centos6'
         uses: actions/upload-artifact@v1
         with:
           name: mfutil_c-linux64-${{ matrix.centos-version }}-${{ steps.vars.outputs.tag }}
