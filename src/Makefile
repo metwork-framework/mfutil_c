@@ -10,7 +10,7 @@ ifeq ($(FORCE_RPATH),)
 else
 	FORCE_RPATH_STR=-Wl,-rpath=$(FORCE_RPATH)
 endif
-PREFIX=/usr/local
+PREFIX?=/usr/local
 CFLAGS+=-D_XOPEN_SOURCE=700
 
 _LDFLAGS=$(LDFLAGS) -L. $(shell pkg-config --libs glib-2.0) $(FORCE_RPATH_STR)
@@ -86,3 +86,8 @@ install:
 
 test: all
 	./test_std_redirect.sh
+
+leak: all
+	$(VALGRIND) ./std_redirect && echo "OK"
+
+coverage: all
