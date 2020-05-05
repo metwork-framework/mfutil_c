@@ -75,7 +75,7 @@ _field_prepend: _field_prepend.c $(OBJECTS)
 _field_remove: _field_remove.c $(OBJECTS)
 	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
 
-install:
+install: $(BINARIES) $(LIBS)
 	mkdir -p $(PREFIX)/bin
 	mkdir -p $(PREFIX)/lib/pkgconfig
 	mkdir -p $(PREFIX)/include
