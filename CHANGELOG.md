@@ -2,6 +2,17 @@
 
 
 
+## v0.0.6 (2020-05-05)
+
+### New Features
+- use github actions
+- matrix build (centos6, centos7, centos8)
+
+
+
+
+
+
 ## v0.0.5 (2019-10-21)
 
 ### New Features
