@@ -1,9 +1,8 @@
 # mfutil_c
 
-[//]: # (automatically generated from https://github.com/metwork-framework/resources/blob/master/cookiecutter/_%7B%7Bcookiecutter.repo%7D%7D/README.md)
+[//]: # (automatically generated from https://github.com/metwork-framework/github_organization_management/blob/master/common_files/README.md)
 
 **Status (master branch)**
-
 
 
 
@@ -11,18 +10,11 @@
 [![Maintenance](https://github.com/metwork-framework/resources/blob/master/badges/maintained.svg)]()
 
 
-[//]: # (TABLE_OF_CONTENTS_PLACEHOLDER)
-
 
 
 ## What is it?
 
 **mfutil_c** is a very low level C libraries/utily for metwork/framework
-
-
-
-
-
 
 
 
