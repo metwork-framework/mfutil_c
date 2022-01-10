@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        centos-version: [centos6, centos7, centos8]
+        centos-version: [centos7, centos8]
     steps:
       - uses: actions/checkout@v2
         name: checkout repository
