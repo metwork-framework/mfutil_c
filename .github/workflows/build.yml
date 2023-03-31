@@ -23,7 +23,7 @@ jobs:
       - name: update dockerfile
         run: sed docker/Dockerfile -e "s/{{centos-version}}/${{ matrix.centos-version }}/" -i
       - name: make docker buildimage
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           username: "${{ secrets.DOCKER_USERNAME }}"
           password: "${{ secrets.DOCKER_PASSWORD }}"
