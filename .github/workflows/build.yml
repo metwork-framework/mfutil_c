@@ -18,7 +18,7 @@ jobs:
       matrix:
         centos-version: [centos7, centos8]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: checkout repository
       - name: update dockerfile
         run: sed docker/Dockerfile -e "s/{{centos-version}}/${{ matrix.centos-version }}/" -i
