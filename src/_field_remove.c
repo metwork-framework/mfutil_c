@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
     context = g_option_context_new("LIST_OF_VALUES VALUE_TO_REMOVE - remove a value from a list of values separated with a given separator");
     g_option_context_add_main_entries(context, entries, NULL);
     if (!g_option_context_parse(context, &argc, &argv, NULL)) {
-        g_print(g_option_context_get_help(context, TRUE, NULL));
+        g_print("%s", g_option_context_get_help(context, TRUE, NULL));
         return 1;
     }
     if (argc != 3) {
-        g_print(g_option_context_get_help(context, TRUE, NULL));
+        g_print("%s", g_option_context_get_help(context, TRUE, NULL));
         return 1;
     }
     gchar *res = field_remove(argv[1], argv[2], separator, use_wildcards);

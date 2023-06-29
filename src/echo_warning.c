@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
     context = g_option_context_new("[MESSAGE] - write WARNING (with colors if supported) and a little optional message");
     g_option_context_add_main_entries(context, entries, NULL);
     if (!g_option_context_parse (context, &argc, &argv, &error)) {
-        g_print(g_option_context_get_help(context, TRUE, NULL));
+        g_print("%s", g_option_context_get_help(context, TRUE, NULL));
         fprintf(stderr, "ERROR WHEN COMMAND LINE PARSING\n");
     }
     if (argc > 2) {
-        g_print(g_option_context_get_help(context, TRUE, NULL));
+        g_print("%s", g_option_context_get_help(context, TRUE, NULL));
         fprintf(stderr, "ERROR WHEN COMMAND LINE PARSING\n");
     }
     if (argc == 2) {
