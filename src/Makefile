@@ -64,7 +64,7 @@ echo_nok: echo_nok.c $(OBJECTS)
 	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 get_unique_hexa_identifier: get_unique_hexa_identifier.c $(OBJECTS)
-	$(CC) $(_CFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 is_interactive: is_interactive.c $(OBJECTS)
 	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
