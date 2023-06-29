@@ -31,7 +31,7 @@ mfutil.o: mfutil.c mfutil.h _mfutil.h
 	$(CC) -c $(_CFLAGS) -o $@ $<
 
 libmfutil.so: $(OBJECTS)
-	$(CC) -shared $(CFLAGS) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) -shared $(CFLAGS) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 mfutil.pc: mfutil.pc.pc
 	cat $< |sed 's|{{PREFIX}}|$(PREFIX)|g' >$@
@@ -43,37 +43,37 @@ field.o: field.c field.h
 	$(CC) -c $(_CFLAGS) -o $@ $<
 
 std_redirect: std_redirect.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_clean: echo_clean.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_bold: echo_bold.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_running: echo_running.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_warning: echo_warning.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_ok: echo_ok.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 echo_nok: echo_nok.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 get_unique_hexa_identifier: get_unique_hexa_identifier.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^
 
 is_interactive: is_interactive.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 _field_prepend: _field_prepend.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 _field_remove: _field_remove.c $(OBJECTS)
-	$(CC) $(_CFLAGS) $(_LDFLAGS) -o $@ $^
+	$(CC) $(_CFLAGS) -o $@ $^ $(_LDFLAGS)
 
 install: $(BINARIES) $(LIBS)
 	mkdir -p $(PREFIX)/bin
