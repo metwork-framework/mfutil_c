@@ -29,9 +29,9 @@ GRand *__get_grand()
  */
 glong mfutil_get_current_timestamp()
 {
-    GTimeVal gtv;
-    g_get_current_time(&gtv);
-    return gtv.tv_sec;
+    gint64 current_time;
+    current_time = g_get_real_time() / G_USEC_PER_SEC;
+    return current_time;
 }
 
 /**
