@@ -42,8 +42,12 @@ jobs:
         uses: actions/checkout@v3
       - name: debug env
         run: env |grep GITHUB
-      - name: build rocky
-        uses: docker://metwork/mfutilc-${{ matrix.rocky-version }}-buildimage
+      - name: build rocky8
+        if: matrix.rocky-version == 'rocky8'
+        uses: docker://metwork/mfutilc-rocky8-buildimage
+      - name: build rocky9
+        if: matrix.rocky-version == 'rocky9'
+        uses: docker://metwork/mfutilc-rocky9-buildimage
       - name: compute tag name
         id: vars
         run: |
