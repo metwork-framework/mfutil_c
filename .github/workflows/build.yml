@@ -16,18 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rocky-version: [8, 9]
+        rocky-number: [8, 9]
     steps:
       - uses: actions/checkout@v3
         name: checkout repository
       - name: update dockerfile
-        run: sed docker/Dockerfile -e "s/{{rocky-version}}/${{ matrix.rocky-version }}/" -i
+        run: sed docker/Dockerfile -e "s/{{rocky-number}}/${{ matrix.rocky-number }}/" -i
       - name: make docker buildimage
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           username: "${{ secrets.DOCKER_USERNAME }}"
           password: "${{ secrets.DOCKER_PASSWORD }}"
-          name: metwork/mfutilc-${{ matrix.rocky-version }}-buildimage
+          name: metwork/mfutilc-rocky${{ matrix.rocky-number }}-buildimage
           context: docker
           cache: true
           tags: "latest"
@@ -36,32 +36,28 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        rocky-version: [8, 9]
+        rocky-version: [rocky8, rocky9]
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
       - name: debug env
         run: env |grep GITHUB
-      - name: build rocky8
-        if: matrix.rocky-version == '8'
-        uses: docker://metwork/mfutilc-rocky8-buildimage
-      - name: build rocky9
-        if: matrix.rocky-version == '9'
-        uses: docker://metwork/mfutilc-rocky9-buildimage
+      - name: build rocky
+        uses: docker://metwork/mfutilc-${{ matrix.rocky-version }-buildimage
       - name: compute tag name
         id: vars
         run: |
           TMPREF=${GITHUB_REF#refs/*/}
           if [[ "$TMPREF" == */merge ]]; then echo "tag="`echo pr${TMPREF} |awk -F '/' '{print $1;}'`>> ${GITHUB_OUTPUT}; else echo "tag="${TMPREF}>> ${GITHUB_OUTPUT}; fi
       - name: make tar.gz
-        if: matrix.rocky-version == '8'
+        if: matrix.rocky-version == 'rocky8'
         run: |
           ls -l release/*
           mv release mfutil_c-linux64-${{ steps.vars.outputs.tag }}
           tar -cvf mfutil_c-linux64-${{ steps.vars.outputs.tag }}.tar mfutil_c-linux64-${{ steps.vars.outputs.tag }}
           gzip mfutil_c-linux64-${{ steps.vars.outputs.tag }}.tar
       - name: upload artifact
-        if: matrix.rocky-version == '8'
+        if: matrix.rocky-version == 'rocky8'
         uses: actions/upload-artifact@v1
         with:
           name: mfutil_c-linux64-${{ matrix.rocky-version }}-${{ steps.vars.outputs.tag }}
