@@ -1,4 +1,4 @@
-FROM centos:{{centos-version}}
+FROM rockylinux:{{rocky-version}}
 MAINTAINER Fabien MARTY <fabien.marty@gmail.com>
 
 RUN yum -y install gcc make valgrind glib2-devel
