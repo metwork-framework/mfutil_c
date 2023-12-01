@@ -43,7 +43,7 @@ jobs:
       - name: debug env
         run: env |grep GITHUB
       - name: build rocky
-        uses: docker://metwork/mfutilc-${{ matrix.rocky-version }-buildimage
+        uses: docker://metwork/mfutilc-${{ matrix.rocky-version }}-buildimage
       - name: compute tag name
         id: vars
         run: |
