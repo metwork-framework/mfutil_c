@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [Unreleased]
+
+### New Features
+
+- move from centos to rockylinux
+
 ## v0.0.6 (2020-05-05)
 
 ### New Features
