@@ -62,7 +62,7 @@ jobs:
           gzip mfutil_c-linux64-${{ steps.vars.outputs.tag }}.tar
       - name: upload artifact
         if: matrix.rocky-version == 'rocky8'
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: mfutil_c-linux64-${{ matrix.rocky-version }}-${{ steps.vars.outputs.tag }}
           path: ./mfutil_c-linux64-${{ steps.vars.outputs.tag }}
