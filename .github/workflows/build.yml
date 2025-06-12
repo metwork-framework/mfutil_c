@@ -36,7 +36,7 @@ jobs:
     needs: prepare
     strategy:
       matrix:
-        rocky-version: [rocky8, rocky9]
+        rocky-version: [rocky8, rocky9, rocky10]
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -48,6 +48,9 @@ jobs:
       - name: build rocky9
         if: matrix.rocky-version == 'rocky9'
         uses: docker://metwork/mfutilc-rocky9-buildimage
+      - name: build rocky10
+        if: matrix.rocky-version == 'rocky10'
+        uses: docker://metwork/mfutilc-rocky10-buildimage
       - name: compute tag name
         id: vars
         run: |
