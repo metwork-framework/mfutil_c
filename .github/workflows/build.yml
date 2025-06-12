@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rocky-number: [8, 9]
+        rocky-number: [8, 9, 10]
     steps:
       - uses: actions/checkout@v4
         name: checkout repository
