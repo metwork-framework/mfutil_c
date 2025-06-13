@@ -78,12 +78,11 @@ gchar *field_remove(const gchar *list_of_values, const gchar *value,
         if (!use_wildcards) {
             match = (g_strcmp0(tmp[i], value) == 0);
         } else {
-	    if (glib_minor_version >= 70) {
-                match = g_pattern_spec_match_string(pattern, tmp[i]);
-	    }
-	    else {
-                match = g_pattern_match_string(pattern, tmp[i]);
-	    }
+#if GLIB_CHECK_VERSION(2,70,0)
+            match = g_pattern_spec_match_string(pattern, tmp[i]);
+#else
+            match = g_pattern_match_string(pattern, tmp[i]);
+#endif
         }
         if (!match) {
             if (!first) {
