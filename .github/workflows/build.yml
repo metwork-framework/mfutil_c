@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v4
       - name: debug env
         run: env |grep GITHUB
-      - name: build rocky
+      - name: build
         uses: docker://metwork/mfutilc-${{ matrix.rocky-version }}-buildimage
       - name: compute tag name
         id: vars
