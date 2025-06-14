@@ -1,10 +1,14 @@
 # CHANGELOG
 
-## [Unreleased]
+## v0.0.7 (2025-06-13)
 
 ### New Features
 
 - move from centos to rockylinux
+
+### Bug Fixes
+
+- replace g_pattern_match_string by g_pattern_spec_match_string
 
 ## v0.0.6 (2020-05-05)
 
